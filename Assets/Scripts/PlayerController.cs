@@ -22,5 +22,48 @@ public class PlayerController : MonoBehaviour
     private PlayerActions playerActions;
     private InputAction roll, pitch;
 
+    private void Awake() {
+        rb = this.GetComponent<Rigidbody>();
+        playerActions = new PlayerActions();
+    }
+
+    private void OnEnable() {
+        playerActions.Player.Coo.started += DoCoo;
+        playerActions.Player.Flap.started += DoFlap;
+
+        roll = playerActions.Player.Roll;
+        pitch = playerActions.Player.Pitch;
+
+        playerActions.Player.Enable();
+    }
+
+    private void OnDisable() {
+        playerActions.Player.Coo.started -= DoCoo;
+        playerActions.Player.Flap.started -= DoFlap;
+
+        playerActions.Player.Disable();
+    }
+
+    private void FixedUpdate() {
+        //TODO: cast a ray from front of bird (tip of beak maybe?) to create a heading, have the bird along that heading
+        //do the ray casting when updating the bird's position possibly for better performance?
+    }
+
+
+    //flaps the player's wings or allows them to take off
+    private void DoFlap(InputAction.CallbackContext obj) {
+        if(isLanded) {
+            Takeoff();
+        } //TODO: else: have the flap animation play, raise the height of the player slightly relative to the orientation of the model, reset the flap delay timer
+    }
+
+    private void DoCoo(InputAction.CallbackContext obj) {
+        throw new NotImplementedException();
+    }
+
+    private void Takeoff() {
+        isLanded = false;
+    }
+
 
 }
