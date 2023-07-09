@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     //movment fields
     private Rigidbody rb;
-    [SerializeField] [Tooltip("max angle (in degrees) the model can pitch in flight")] private float maxPitch = 90f; 
-    [SerializeField] [Tooltip("max angle (in degrees) the model can roll in flight")] private float maxRoll = 90f;
-    [SerializeField] [Tooltip("max angle (in degrees) the model can yaw in flight (not currently used)")] private float maxYaw = 90f; 
+    [SerializeField] [Tooltip("max angle (in degrees, roughly) the model can pitch in flight")] private float maxPitch = 90f; 
+    [SerializeField] [Tooltip("max angle (in degrees, roughly) the model can roll in flight")] private float maxRoll = 90f;
+    [SerializeField] [Tooltip("max angle (in degrees, roughly) the model can yaw in flight (not currently used)")] private float maxYaw = 90f; 
     [SerializeField] [Tooltip("how much the player will roll while holding down the corresponding key")] private float rollInterval = .5f; 
     [SerializeField] [Tooltip("how much the player will pitch up/down while holding down the corresponding key")] private float pitchInterval = .5f;
     [SerializeField] private float flapForce = 20f;
@@ -44,8 +44,50 @@ public class PlayerController : MonoBehaviour
         playerAction.Player.Disable();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         //TODO: pitch and roll code
+        AdjustRoll();
+        AdjustPitch();
+    }
+
+    private void AdjustRoll()
+    {
+        if (roll.ReadValue<float>() < 0)
+        {
+            if (this.transform.localRotation.z * 120 < maxRoll)
+            {
+                this.transform.Rotate(new Vector3(0,0,rollInterval));
+                Debug.Log("Rolling to the right!");
+            }
+        }
+        else if (roll.ReadValue<float>() > 0)
+        {
+            if (this.transform.localRotation.z * 120 > -maxRoll)
+            {
+                this.transform.Rotate(new Vector3(0,0,-rollInterval));
+                Debug.Log("Rolling to the left!");
+            }
+        }
+    }
+
+    private void AdjustPitch() {
+        if (pitch.ReadValue<float>() > 0)
+        {
+            if (this.transform.rotation.x * 120 < maxPitch)
+            {
+                this.transform.Rotate(new Vector3(pitchInterval,0,0));
+                Debug.Log("Pitching up!");
+            }
+        }
+        else if (pitch.ReadValue<float>() < 0)
+        {
+            if (this.transform.rotation.x * 120 > -maxPitch)
+            {
+                this.transform.Rotate(new Vector3(-pitchInterval,0,0));
+                Debug.Log("Pitching down!");
+            }
+        }
     }
 
 
