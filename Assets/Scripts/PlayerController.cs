@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Takeoff() {
-        rb.AddForce((new Vector3(0,1,1) * takeoffForce), ForceMode.Impulse);
+        //rb.AddForce((new Vector3(0,1,1) * takeoffForce), ForceMode.Impulse);
         isLanded = false;
     }
 
