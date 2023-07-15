@@ -647,9 +647,9 @@ MonoBehaviour:
   maxYaw: 90
   rollInterval: 1.25
   pitchInterval: 2.53
-  flapForce: 10
+  flapForce: 2
   takeoffForce: 1000
-  flapDelay: 3
+  flapDelay: 0.25
 --- !u!65 &1583398259
 BoxCollider:
   m_ObjectHideFlags: 0
