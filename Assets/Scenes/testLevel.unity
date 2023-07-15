@@ -2388,7 +2388,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 734343071}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 1
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -4263,7 +4263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9855cc5c4cead645a35392b0c492593, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 177.81375
+      value: 178.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9855cc5c4cead645a35392b0c492593, type: 3}
       propertyPath: m_LocalPosition.z
