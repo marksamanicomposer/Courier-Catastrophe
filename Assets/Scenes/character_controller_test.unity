@@ -644,12 +644,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPitch: 30
   maxRoll: 50
-  maxYaw: 90
   rollInterval: 1.25
   pitchInterval: 2.53
-  flapForce: 2
+  flapForce: 1
   takeoffForce: 1000
   flapDelay: 0.25
+  flapInterval: 0.05
 --- !u!65 &1583398259
 BoxCollider:
   m_ObjectHideFlags: 0

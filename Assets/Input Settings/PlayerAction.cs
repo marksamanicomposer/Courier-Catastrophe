@@ -29,12 +29,12 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Flap"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""00671974-d721-4fbc-9eeb-53431390be64"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Roll"",
@@ -65,17 +65,6 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""463187f0-24b9-47d7-a63e-99d9adc32cf2"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Flap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""1D Axis"",
                     ""id"": ""e7fe1600-2ce6-4847-9deb-3a00214e6027"",
@@ -152,6 +141,39 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""action"": ""Coo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""b03c492c-98af-4e6b-85ff-dd0277971a38"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flap"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""085473fb-c1ba-4cdd-a715-b7263e51a3bc"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""234030d7-a632-42af-84b8-c860d076d080"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
