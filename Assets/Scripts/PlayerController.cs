@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float flapForce = 20f;
     [SerializeField] private float takeoffForce = 1000f;
     [SerializeField] [Tooltip("time between flaps")] private float flapDelay = 3f;
-    [SerializeField] [Tooltip("float representing how quick the time between flaps counts down (more is faster)")] private float flapInterval = .05f;
+    [SerializeField] [Tooltip("how much the time between flaps counts down per tick (more is faster)")] private float flapInterval = .05f;
+    [SerializeField] [Tooltip("how far away the player can be for a landing to trigger")] private float landingDistance = 1.5f;
     private float flapTimer;
     private bool isLanded = false;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable() {
         playerAction.Player.Coo.started += DoCoo;
+        playerAction.Player.Landing.started += DoLandingCheck;
 
         roll = playerAction.Player.Roll;
         pitch = playerAction.Player.Pitch;
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable() {
         playerAction.Player.Coo.started -= DoCoo;
+        playerAction.Player.Landing.started -= DoLandingCheck;
 
         playerAction.Player.Disable();
     }
@@ -51,6 +54,10 @@ public class PlayerController : MonoBehaviour
 
         //flap up/down
         DoFlap();
+
+        //check if player has physically landed without pressing the landing key, then call the landing method
+        if (Physics.Raycast(transform.position, Vector3.down, .01f))
+            Land();
     }
 
     private void AdjustRoll()
@@ -97,8 +104,7 @@ public class PlayerController : MonoBehaviour
             flapTimer -= flapInterval;
 
         //if the player is able to flap and is pressing/holding the go up or go down button, do a flap in the appropriate direction
-        if (Mathf.Abs(flap.ReadValue<float>()) > 0 && flapTimer <= 0) { 
-            
+        if (Mathf.Abs(flap.ReadValue<float>()) > 0 && flapTimer <= 0) {    
             rb.AddForce(transform.up * flapForce * flap.ReadValue<float>(), ForceMode.Impulse);
             flapTimer = flapDelay;
         }
@@ -109,9 +115,35 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Coo!");
     }
 
+    //determine if player wants to take off or land when pressing the "landing" key
+    private void DoLandingCheck(InputAction.CallbackContext obj) {
+        Debug.Log("Left shift pressed");
+
+        if (isLanded)
+            Takeoff();
+        else if (!isLanded) {
+
+            //determine if it is possible for player to land
+            if (Physics.Raycast(transform.position, Vector3.down, landingDistance)) {
+            Debug.Log("I can land!");
+            Land();
+
+            /*TODO: actually getting the model to land, 
+            switching the camera to a free look based on mouse movement (break this out into a second script, prob attached to the cam gameobj),
+            disabling (or ignoring) the pitch/roll/flap actions*/
+
+            }
+
+        }
+            
+    }
     private void Takeoff() {
         //rb.AddForce((new Vector3(0,1,1) * takeoffForce), ForceMode.Impulse);
         isLanded = false;
+    }
+
+    private void Land() { 
+        isLanded = true;
     }
 
 

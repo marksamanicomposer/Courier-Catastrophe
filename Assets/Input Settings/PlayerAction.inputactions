@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Landing",
+                    "type": "Button",
+                    "id": "4cddaa6f-6281-4558-b0a4-40aa7cb580c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -152,6 +161,17 @@
                     "action": "Flap",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "aba4b6fd-ee93-4697-b7ab-c8c1e0647f52",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Landing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

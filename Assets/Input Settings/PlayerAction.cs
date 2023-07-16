@@ -62,6 +62,15 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Landing"",
+                    ""type"": ""Button"",
+                    ""id"": ""4cddaa6f-6281-4558-b0a4-40aa7cb580c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""action"": ""Flap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aba4b6fd-ee93-4697-b7ab-c8c1e0647f52"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Landing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_Pitch = m_Player.FindAction("Pitch", throwIfNotFound: true);
         m_Player_Coo = m_Player.FindAction("Coo", throwIfNotFound: true);
+        m_Player_Landing = m_Player.FindAction("Landing", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_Pitch;
     private readonly InputAction m_Player_Coo;
+    private readonly InputAction m_Player_Landing;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -259,6 +281,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @Pitch => m_Wrapper.m_Player_Pitch;
         public InputAction @Coo => m_Wrapper.m_Player_Coo;
+        public InputAction @Landing => m_Wrapper.m_Player_Landing;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +303,9 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
             @Coo.started += instance.OnCoo;
             @Coo.performed += instance.OnCoo;
             @Coo.canceled += instance.OnCoo;
+            @Landing.started += instance.OnLanding;
+            @Landing.performed += instance.OnLanding;
+            @Landing.canceled += instance.OnLanding;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -296,6 +322,9 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
             @Coo.started -= instance.OnCoo;
             @Coo.performed -= instance.OnCoo;
             @Coo.canceled -= instance.OnCoo;
+            @Landing.started -= instance.OnLanding;
+            @Landing.performed -= instance.OnLanding;
+            @Landing.canceled -= instance.OnLanding;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -319,5 +348,6 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnPitch(InputAction.CallbackContext context);
         void OnCoo(InputAction.CallbackContext context);
+        void OnLanding(InputAction.CallbackContext context);
     }
 }
