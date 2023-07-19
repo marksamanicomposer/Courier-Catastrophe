@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,12 +13,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Tooltip("how much the player will roll while holding down the corresponding key")] private float rollInterval = .5f; 
     [SerializeField] [Tooltip("how much the player will pitch up/down while holding down the corresponding key")] private float pitchInterval = .5f;
     [SerializeField] private float flapForce = 20f;
-    [SerializeField] private float takeoffForce = 1000f;
+    [SerializeField] private float takeoffForce = 30f;
     [SerializeField] [Tooltip("time between flaps")] private float flapDelay = 3f;
     [SerializeField] [Tooltip("how much the time between flaps counts down per tick (more is faster)")] private float flapInterval = .05f;
     [SerializeField] [Tooltip("how far away the player can be for a landing to trigger")] private float landingDistance = 1.5f;
     private float flapTimer;
     private bool isLanded = false;
+
+    //camera prefab
+    [SerializeField] [Tooltip("Cinemachine state camera prefab")] private GameObject stateDrivenCamera;
+
 
     //input fields
     private PlayerAction playerAction;
@@ -48,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(rb.velocity);
+
         //pitch and roll code
         AdjustRoll();
         AdjustPitch();
@@ -138,12 +145,19 @@ public class PlayerController : MonoBehaviour
             
     }
     private void Takeoff() {
-        //rb.AddForce((new Vector3(0,1,1) * takeoffForce), ForceMode.Impulse);
         isLanded = false;
+        rb.AddForce((transform.forward + transform.up) * takeoffForce, ForceMode.Impulse);
+
+        //unlock movement and switch to normal camera
+        stateDrivenCamera.CameraToggle.CameraSwitch(isLanded);
     }
 
     private void Land() { 
         isLanded = true;
+        rb.velocity = Vector3.zero;
+
+        //TODO: lock movement and switch to free look camera
+        //stateDrivenCamera.CameraToggle.CameraSwitch(isLanded);
     }
 
 
