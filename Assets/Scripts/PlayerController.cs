@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private float flapTimer;
     private bool isLanded = false;
 
-    //camera prefab
+    //camera prefab gameobject
     [SerializeField] [Tooltip("Cinemachine state camera prefab")] private GameObject stateDrivenCamera;
 
 
@@ -53,8 +52,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(rb.velocity);
-
         //pitch and roll code
         AdjustRoll();
         AdjustPitch();
@@ -62,8 +59,9 @@ public class PlayerController : MonoBehaviour
         //flap up/down
         DoFlap();
 
+        Debug.Log(Physics.Raycast(transform.position, Vector3.down, .5f));
         //check if player has physically landed without pressing the landing key, then call the landing method
-        if (Physics.Raycast(transform.position, Vector3.down, .01f))
+        if (Physics.Raycast(transform.position, Vector3.down, .5f))
             Land();
     }
 
@@ -149,7 +147,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce((transform.forward + transform.up) * takeoffForce, ForceMode.Impulse);
 
         //unlock movement and switch to normal camera
-        stateDrivenCamera.CameraToggle.CameraSwitch(isLanded);
+        stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
     }
 
     private void Land() { 
@@ -157,7 +155,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         //TODO: lock movement and switch to free look camera
-        //stateDrivenCamera.CameraToggle.CameraSwitch(isLanded);
+        stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
     }
 
 
