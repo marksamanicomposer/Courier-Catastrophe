@@ -59,12 +59,14 @@ public class PlayerController : MonoBehaviour
         //flap up/down
         DoFlap();
 
-        Debug.Log(Physics.Raycast(transform.position, Vector3.down, .5f));
-        //check if player has physically landed without pressing the landing key, then call the landing method
-        if (Physics.Raycast(transform.position, Vector3.down, .5f))
-            Land();
     }
 
+    void OnCollisionEnter(Collision col)
+    {
+        //check if player collided with an object they can land on
+        if (col.gameObject.tag == "Landable")
+            Land();
+    }
     private void AdjustRoll()
     {
         if (roll.ReadValue<float>() < 0)
