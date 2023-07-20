@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/CameraToggle.cs.meta
+guid: 7aa56136f598e4847adade61c17ca8c9
+========
+guid: 848c3a0ab0c724c8089fa1d02f1d7b75
+>>>>>>>> 87230c7c7f0dba193b7f2576ade2dd925349bd22:Assets/Scripts/CollectPage.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
