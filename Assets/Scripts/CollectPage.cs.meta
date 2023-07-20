@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/CameraToggle.cs.meta
-guid: 19f63dd500ef7ee4183a4bde7bb37ee5
-========
 guid: 848c3a0ab0c724c8089fa1d02f1d7b75
->>>>>>>> 87230c7c7f0dba193b7f2576ade2dd925349bd22:Assets/Scripts/CollectPage.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
