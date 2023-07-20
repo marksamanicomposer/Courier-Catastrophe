@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce((transform.forward + transform.up) * takeoffForce, ForceMode.Impulse);
 
         //unlock movement and switch to normal camera
-        stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
+        //stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
     }
 
     private void Land() { 
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         //TODO: lock movement and switch to free look camera
-        stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
+        //stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
     }
 
 
