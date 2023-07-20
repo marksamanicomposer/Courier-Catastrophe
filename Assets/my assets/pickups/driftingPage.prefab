@@ -100,8 +100,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3358048163801616271}
   - component: {fileID: 8681255457478776309}
-  - component: {fileID: -1700681049904091260}
   - component: {fileID: 9199025309959005261}
+  - component: {fileID: 394640427603200102}
   m_Layer: 0
   m_Name: driftingPage
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Transform:
   - {fileID: 2853316058536845014}
   - {fileID: 100589708713141067}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8681255457478776309
 Animator:
@@ -147,27 +147,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &-1700681049904091260
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725240380860405045}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.74, y: 0.57, z: 0}
 --- !u!65 &9199025309959005261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -189,6 +168,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -1.04, y: 0.57, z: 0}
+--- !u!114 &394640427603200102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725240380860405045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa56136f598e4847adade61c17ca8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
 --- !u!1 &6730000968941574135
 GameObject:
   m_ObjectHideFlags: 0
