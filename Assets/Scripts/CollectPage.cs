@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CollectPage : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CollectPage : MonoBehaviour
 
     void Start()
     {
-        scoreText.text = "Scraps: " + 0 + "/5";
+        scoreText.text = "Pages: " + 0 + "/6";
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +20,7 @@ public class CollectPage : MonoBehaviour
         if(other.tag == "Player")
         {
             UpdatePageCount();
+            CheckForWin();
             Destroy(gameObject);
         }
     }
@@ -26,13 +28,15 @@ public class CollectPage : MonoBehaviour
     void UpdatePageCount()
     {
         _pageCount += 1;
-        scoreText.text = "Scraps: " + _pageCount + "/5";
+        scoreText.text = "Pages: " + _pageCount + "/6";
     }
 
-    private void Update()
+    private void CheckForWin()
     {
-        if (_pageCount == 5)
-            //Load final scene
-            return;
+        if (_pageCount == 6)
+        {
+            SceneManager.LoadScene(3);
+            MusicPlayer.Instance.PlayEndingMusic();
+        }
     }
 }

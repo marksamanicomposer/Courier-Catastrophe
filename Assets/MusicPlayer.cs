@@ -27,4 +27,10 @@ public class MusicPlayer : MonoBehaviour
         intro.Play();
         gameplay.PlayScheduled(AudioSettings.dspTime + (intro.clip.length - 5));
     }
+
+    public void PlayEndingMusic()
+    {
+        gameplay.Stop();
+        outro.Play();
+    }
 }
