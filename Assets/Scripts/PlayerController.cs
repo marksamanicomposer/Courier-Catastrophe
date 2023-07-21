@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Tooltip("max angle (in degrees, roughly) the model can roll in flight")] private float maxRoll = 90f;
     [SerializeField] [Tooltip("how much the player will roll while holding down the corresponding key")] private float rollInterval = .5f; 
     [SerializeField] [Tooltip("how much the player will pitch up/down while holding down the corresponding key")] private float pitchInterval = .5f;
+    [SerializeField] [Tooltip("how much the player will adjust yaw while holding down the corresponding key")] private float yawInterval = .7f;
     [SerializeField] private float flapForce = 20f;
     [SerializeField] private float takeoffForce = 30f;
     [SerializeField] [Tooltip("time between flaps")] private float flapDelay = 3f;
@@ -18,14 +19,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Tooltip("how far away the player can be for a landing to trigger")] private float landingDistance = 1.5f;
     private float flapTimer;
     private bool isLanded = false;
+    public bool getIsLanded() {
+        return isLanded;
+    }
 
     //camera prefab gameobject
-    [SerializeField] [Tooltip("Cinemachine state camera prefab")] private GameObject stateDrivenCamera;
-
+   // [SerializeField] [Tooltip("Cinemachine state camera prefab")] private GameObject stateDrivenCamera;
 
     //input fields
     private PlayerAction playerAction;
-    private InputAction roll, pitch, flap;
+    private InputAction roll, pitch, flap, yaw;
 
     private void Awake() {
         rb = this.GetComponent<Rigidbody>();
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
         roll = playerAction.Player.Roll;
         pitch = playerAction.Player.Pitch;
         flap = playerAction.Player.Flap;
+        yaw = playerAction.Player.Yaw;
 
         playerAction.Player.Enable();
     }
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour
         //pitch and roll code
         AdjustRoll();
         AdjustPitch();
+        AdjustYaw();
 
         //flap up/down
         DoFlap();
@@ -64,8 +69,14 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         //check if player collided with an object they can land on
-        if (col.gameObject.tag == "Landable")
+        if (col.gameObject.tag == "Terrain")
             Land();
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "Terrain")
+            Takeoff();
     }
     private void AdjustRoll()
     {
@@ -102,6 +113,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void AdjustYaw() {
+        if (Mathf.Abs(yaw.ReadValue<float>()) > 0) 
+        {
+            transform.Rotate(new Vector3(0,(yawInterval * yaw.ReadValue<float>()), 0)); //turn left or right
+        }
+    }
+
 
     //flaps the player's wings
     private void DoFlap() {
@@ -129,6 +147,8 @@ public class PlayerController : MonoBehaviour
         if (isLanded)
             Takeoff();
         else if (!isLanded) {
+            
+            //rb.AddForce(Vector3.down * flapForce, ForceMode.Impulse);
 
             //determine if it is possible for player to land
             if (Physics.Raycast(transform.position, Vector3.down, landingDistance)) {
@@ -148,13 +168,21 @@ public class PlayerController : MonoBehaviour
         isLanded = false;
         rb.AddForce((transform.forward + transform.up) * takeoffForce, ForceMode.Impulse);
 
+        rb.constraints = RigidbodyConstraints.None;
+
+
         //unlock movement and switch to normal camera
         //stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
     }
 
     private void Land() { 
         isLanded = true;
+
         rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
 
         //TODO: lock movement and switch to free look camera
         //stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
