@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        MusicPlayer.Instance.gameplay.Stop();
         Destroy(MusicPlayer.Instance);
         SceneManager.LoadScene(0);
     }
