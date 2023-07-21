@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.29
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.29885688, g: 0.37820378, b: 0.4527257, a: 0.29}
+  m_IndirectSpecularColor: {r: 0.29885694, g: 0.37820396, b: 0.45272642, a: 0.29}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18119,6 +18119,7 @@ MonoBehaviour:
   yawInterval: 2
   flapForce: 4
   takeoffForce: 50
+  forwardForce: 100
   flapDelay: 0
   flapInterval: 0
   landingDistance: 1.5

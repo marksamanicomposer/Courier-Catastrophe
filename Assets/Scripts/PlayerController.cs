@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Tooltip("how much the player will adjust yaw while holding down the corresponding key")] private float yawInterval = .7f;
     [SerializeField] private float flapForce = 20f;
     [SerializeField] private float takeoffForce = 30f;
+    [SerializeField] private float forwardForce = 10f;
     [SerializeField] [Tooltip("time between flaps")] private float flapDelay = 3f;
     [SerializeField] [Tooltip("how much the time between flaps counts down per tick (more is faster)")] private float flapInterval = .05f;
     [SerializeField] [Tooltip("how far away the player can be for a landing to trigger")] private float landingDistance = 1.5f;
@@ -58,12 +59,20 @@ public class PlayerController : MonoBehaviour
     {
         //pitch and roll code
         AdjustRoll();
-        AdjustPitch();
+        //AdjustPitch();
         AdjustYaw();
 
         //flap up/down
         DoFlap();
 
+        if (!isLanded){
+            if (pitch.ReadValue<float>() > 0)
+                rb.AddForce(transform.forward * forwardForce * -2, ForceMode.Force);
+            else if (pitch.ReadValue<float>() < 0)
+                rb.AddForce(transform.forward * forwardForce, ForceMode.Force);
+            else if (pitch.ReadValue<float>() == 0)
+                rb.AddForce(transform.forward * forwardForce * -1, ForceMode.Force);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -96,7 +105,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void AdjustPitch() {
+    /*private void AdjustPitch() {
         if (pitch.ReadValue<float>() > 0)
         {
             if (this.transform.rotation.x * 120 < maxPitch)
@@ -111,7 +120,7 @@ public class PlayerController : MonoBehaviour
                 this.transform.Rotate(new Vector3(-pitchInterval,0,0));
             }
         }
-    }
+    }*/
 
     private void AdjustYaw() {
         if (Mathf.Abs(yaw.ReadValue<float>()) > 0) 
