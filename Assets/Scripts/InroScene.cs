@@ -26,14 +26,14 @@ public class InroScene : MonoBehaviour
         RawImage image = (intro1.GetComponent<RawImage>());
         float transparency = intro1.color.a;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         while (transparency < 1)
         {
             transparency += 0.1f;
             intro1.color = new Color(255, 255, 255, transparency);
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         while (transparency > 0)
         {
             transparency -= 0.1f;
@@ -57,7 +57,7 @@ public class InroScene : MonoBehaviour
             intro2.color = new Color(255, 255, 255, transparency);
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         while (transparency > 0)
         {
             transparency -= 0.1f;
@@ -81,7 +81,7 @@ public class InroScene : MonoBehaviour
             intro3.color = new Color(255, 255, 255, transparency);
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         while (transparency > 0)
         {
             transparency -= 0.1f;
@@ -105,7 +105,7 @@ public class InroScene : MonoBehaviour
             intro4.color = new Color(255, 255, 255, transparency);
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         while (transparency > 0)
         {
             transparency -= 0.1f;
