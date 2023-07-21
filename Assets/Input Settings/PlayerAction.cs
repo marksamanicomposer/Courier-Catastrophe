@@ -55,6 +55,15 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Yaw"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee59d55f-9163-4850-89ec-7cb803ced5b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Coo"",
                     ""type"": ""Value"",
                     ""id"": ""8b3cf751-333c-43df-b4f4-10dbd7951e8b"",
@@ -194,6 +203,39 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""action"": ""Landing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""1cfb28b8-0c3c-4b77-b21c-df30550b95c7"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""92139ce8-f855-452d-8816-736af18f5311"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""b24e1d9d-a798-4ba5-abda-43d0fc116984"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -205,6 +247,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
         m_Player_Flap = m_Player.FindAction("Flap", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_Pitch = m_Player.FindAction("Pitch", throwIfNotFound: true);
+        m_Player_Yaw = m_Player.FindAction("Yaw", throwIfNotFound: true);
         m_Player_Coo = m_Player.FindAction("Coo", throwIfNotFound: true);
         m_Player_Landing = m_Player.FindAction("Landing", throwIfNotFound: true);
     }
@@ -271,6 +314,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Flap;
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_Pitch;
+    private readonly InputAction m_Player_Yaw;
     private readonly InputAction m_Player_Coo;
     private readonly InputAction m_Player_Landing;
     public struct PlayerActions
@@ -280,6 +324,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
         public InputAction @Flap => m_Wrapper.m_Player_Flap;
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @Pitch => m_Wrapper.m_Player_Pitch;
+        public InputAction @Yaw => m_Wrapper.m_Player_Yaw;
         public InputAction @Coo => m_Wrapper.m_Player_Coo;
         public InputAction @Landing => m_Wrapper.m_Player_Landing;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -300,6 +345,9 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
             @Pitch.started += instance.OnPitch;
             @Pitch.performed += instance.OnPitch;
             @Pitch.canceled += instance.OnPitch;
+            @Yaw.started += instance.OnYaw;
+            @Yaw.performed += instance.OnYaw;
+            @Yaw.canceled += instance.OnYaw;
             @Coo.started += instance.OnCoo;
             @Coo.performed += instance.OnCoo;
             @Coo.canceled += instance.OnCoo;
@@ -319,6 +367,9 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
             @Pitch.started -= instance.OnPitch;
             @Pitch.performed -= instance.OnPitch;
             @Pitch.canceled -= instance.OnPitch;
+            @Yaw.started -= instance.OnYaw;
+            @Yaw.performed -= instance.OnYaw;
+            @Yaw.canceled -= instance.OnYaw;
             @Coo.started -= instance.OnCoo;
             @Coo.performed -= instance.OnCoo;
             @Coo.canceled -= instance.OnCoo;
@@ -347,6 +398,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
         void OnFlap(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
         void OnPitch(InputAction.CallbackContext context);
+        void OnYaw(InputAction.CallbackContext context);
         void OnCoo(InputAction.CallbackContext context);
         void OnLanding(InputAction.CallbackContext context);
     }
