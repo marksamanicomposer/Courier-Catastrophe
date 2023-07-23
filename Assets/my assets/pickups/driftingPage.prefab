@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 3358048163801616271}
   - component: {fileID: 8681255457478776309}
   - component: {fileID: 9199025309959005261}
-  - component: {fileID: 394640427603200102}
   - component: {fileID: -926425342823055112}
   - component: {fileID: 2888712133502835753}
   m_Layer: 0
@@ -170,19 +169,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -1.04, y: 0.57, z: 0}
---- !u!114 &394640427603200102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725240380860405045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa56136f598e4847adade61c17ca8c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &-926425342823055112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,9 +203,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 5
-  MaxDistance: 25
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
