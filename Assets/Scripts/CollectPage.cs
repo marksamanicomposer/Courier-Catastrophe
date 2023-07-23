@@ -17,11 +17,11 @@ public class CollectPage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "page")
         {
             UpdatePageCount();
             CheckForWin();
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 
