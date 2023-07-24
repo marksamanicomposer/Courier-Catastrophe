@@ -6,6 +6,7 @@ TagManager:
   tags:
   - page
   - Terrain
+  - Goal
   layers:
   - Default
   - TransparentFX
