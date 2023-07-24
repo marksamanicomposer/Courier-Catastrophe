@@ -12,10 +12,14 @@ public class CollectPage : MonoBehaviour
 
     public GameObject goal;
 
+    private AudioSource source;
+
     void Start()
     {
         scoreText.text = "Pages: " + 0 + "/6";
         goal.SetActive(false);
+
+        source = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +27,7 @@ public class CollectPage : MonoBehaviour
         if(other.tag == "page")
         {
             UpdatePageCount();
+            source.Play();
             CheckForWin();
             Destroy(other.gameObject);
         }
