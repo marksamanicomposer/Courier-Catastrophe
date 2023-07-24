@@ -10,9 +10,12 @@ public class CollectPage : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int _pageCount = 0;
 
+    public GameObject goal;
+
     void Start()
     {
         scoreText.text = "Pages: " + 0 + "/6";
+        goal.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +25,12 @@ public class CollectPage : MonoBehaviour
             UpdatePageCount();
             CheckForWin();
             Destroy(other.gameObject);
+        }
+
+        if(other.tag == "Goal")
+        {
+            SceneManager.LoadScene(3);
+            MusicPlayer.Instance.PlayEndingMusic();
         }
     }
 
@@ -35,8 +44,7 @@ public class CollectPage : MonoBehaviour
     {
         if (_pageCount == 6)
         {
-            SceneManager.LoadScene(3);
-            MusicPlayer.Instance.PlayEndingMusic();
+            goal.SetActive(true);
         }
     }
 }
