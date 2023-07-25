@@ -12,7 +12,7 @@ public class MenuSfx : MonoBehaviour
     public void SelectSfx()
     {
         int newIndex = Random.Range(0, UISelects.Length);
-        source.PlayOneShot(UISelects[newIndex]);
+        source.PlayOneShot(UISelects[newIndex], 0.5f);
     }
 
     public void SubmitSfx()
