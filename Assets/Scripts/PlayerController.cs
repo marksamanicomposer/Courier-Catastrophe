@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float flapForce = 20f;
     [SerializeField] private float takeoffForce = 30f;
     [SerializeField] private float forwardForce = 10f;
+    [SerializeField] private float turningForce = 10f;
     [SerializeField] [Tooltip("time between flaps")] private float flapDelay = 3f;
     [SerializeField] [Tooltip("how much the time between flaps counts down per tick (more is faster)")] private float flapInterval = .05f;
     [SerializeField] [Tooltip("how far away the player can be for a landing to trigger")] private float landingDistance = 1.5f;
@@ -67,11 +68,9 @@ public class PlayerController : MonoBehaviour
 
         if (!isLanded){
             if (pitch.ReadValue<float>() > 0)
-                rb.AddForce(transform.forward * forwardForce * -2, ForceMode.Force);
+                rb.AddForce(-transform.forward * forwardForce, ForceMode.Force);
             else if (pitch.ReadValue<float>() < 0)
                 rb.AddForce(transform.forward * forwardForce, ForceMode.Force);
-            else if (pitch.ReadValue<float>() == 0)
-                rb.AddForce(transform.forward * forwardForce * -1, ForceMode.Force);
         }
     }
 
@@ -89,19 +88,17 @@ public class PlayerController : MonoBehaviour
     }
     private void AdjustRoll()
     {
-        if (roll.ReadValue<float>() < 0)
-        {
-            if (this.transform.localRotation.z * 120 < maxRoll)
-            {
-                this.transform.Rotate(new Vector3(0,0,rollInterval));
+        if (roll.ReadValue<float>() < 0) { 
+            if (transform.rotation.z * 120 < maxRoll) { 
+                transform.Rotate(new Vector3(0,0,rollInterval));
             }
-        }
-        else if (roll.ReadValue<float>() > 0)
-        {
-            if (this.transform.localRotation.z * 120 > -maxRoll)
-            {
-                this.transform.Rotate(new Vector3(0,0,-rollInterval));
+            Turn(Vector3.left);
+        }         
+        else if (roll.ReadValue<float>() > 0) {
+            if (transform.rotation.z * 120 > -maxRoll) {
+                transform.Rotate(new Vector3(0,0,-rollInterval));
             }
+            Turn(Vector3.right);
         }
     }
 
@@ -197,5 +194,9 @@ public class PlayerController : MonoBehaviour
         //stateDrivenCamera.GetComponent<CameraToggle>().CameraSwitch(isLanded);
     }
 
+    private void Turn(Vector3 direction) {
+        rb.AddForce(direction * turningForce, ForceMode.Force);
+
+    }
 
 }
