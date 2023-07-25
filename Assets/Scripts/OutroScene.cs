@@ -12,9 +12,12 @@ public class OutroScene : MonoBehaviour
     public GameObject text;
     public GameObject button;
 
+    private AudioSource submitSource;
+
 
     void Start()
     {
+        submitSource = GetComponent<AudioSource>();
         StartCoroutine("FadeImage");
     }
 
@@ -38,6 +41,13 @@ public class OutroScene : MonoBehaviour
 
     public void RestartGame()
     {
+        StartCoroutine("ResetGame");
+    }
+
+    IEnumerator ResetGame()
+    {
+        submitSource.Play();
+        yield return new WaitForSeconds(submitSource.clip.length);
         Destroy(MusicPlayer.Instance);
         SceneManager.LoadScene(0);
     }
