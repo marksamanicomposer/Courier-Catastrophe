@@ -2,19 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject button;
+    public GameObject pauseMenuUI;
+    public static bool isPaused = false;
+
+    public AudioMixer mixer;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            button.SetActive(true);
-        if (button.activeInHierarchy && Input.GetKeyDown(KeyCode.KeypadEnter))
-            MainMenu();
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-            button.SetActive(false);
+            if (isPaused)
+                Resume();
+            else
+                Pause();
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(true);
+        isPaused = true;
+        mixer.SetFloat("SfxVolume", -80f);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);
+        isPaused = false;
+        mixer.SetFloat("SfxVolume", 0f);
     }
 
     public void MainMenu()
