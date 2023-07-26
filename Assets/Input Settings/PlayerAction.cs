@@ -33,7 +33,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""id"": ""00671974-d721-4fbc-9eeb-53431390be64"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -42,7 +42,7 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""id"": ""8d1298c9-347b-44cb-9083-3cc8b99d2422"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -51,12 +51,12 @@ public partial class @PlayerAction: IInputActionCollection2, IDisposable
                     ""id"": ""be6da4a0-0429-459b-9d5f-5ce594b35a4e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Coo"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""8b3cf751-333c-43df-b4f4-10dbd7951e8b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
