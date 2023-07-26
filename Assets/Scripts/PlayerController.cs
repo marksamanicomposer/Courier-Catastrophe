@@ -8,10 +8,9 @@ public class PlayerController : MonoBehaviour
     //movement fields
     private Rigidbody rb;
     [SerializeField] [Tooltip("max angle (in degrees, roughly) the model can pitch in flight")] private float maxPitch = 90f; 
-    [SerializeField] [Tooltip("how much the player will roll while holding down the corresponding key")] private float rollInterval = .5f;
+    [SerializeField] [Tooltip("how much the player will roll while holding down the corresponding key")] private float pitchInterval = 2.53f;
     [SerializeField] [Tooltip("how much the player will adjust yaw while holding down the corresponding key")] private float yawInterval = .7f;
     [SerializeField] private float maxVelocity = 60f;
-    [SerializeField] [Tooltip("the player's position cannot exceed these values")] private Vector3 bounding;
     [SerializeField] private float flapForce = 20f;
     [SerializeField] private float takeoffForce = 30f;
     [SerializeField] private float forwardForce = 10f;
