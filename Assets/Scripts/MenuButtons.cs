@@ -9,7 +9,7 @@ public class MenuButtons : MonoBehaviour
     public GameObject menuScreen;
     public GameObject controlsMenu;
     public Button closeControlsButton;
-    public Button playButton;
+    public Button controlButton;
 
     public void PlayGame()
     {
@@ -27,7 +27,7 @@ public class MenuButtons : MonoBehaviour
     {
         controlsMenu.SetActive(false);
         menuScreen.SetActive(true);
-        playButton.Select();
+        controlButton.Select();
     }
 
     public void QuitGame()

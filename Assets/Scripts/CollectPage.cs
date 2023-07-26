@@ -11,6 +11,7 @@ public class CollectPage : MonoBehaviour
     private int _pageCount = 0;
 
     public GameObject goal;
+    public GameObject deliveryText;
 
     private AudioSource source;
 
@@ -18,6 +19,7 @@ public class CollectPage : MonoBehaviour
     {
         scoreText.text = "Pages: " + 0 + "/6";
         goal.SetActive(false);
+        deliveryText.SetActive(false);
 
         source = GetComponent<AudioSource>();
     }
@@ -50,6 +52,7 @@ public class CollectPage : MonoBehaviour
         if (_pageCount == 6)
         {
             goal.SetActive(true);
+            deliveryText.SetActive(true);
         }
     }
 }
