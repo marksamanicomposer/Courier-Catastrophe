@@ -48,7 +48,8 @@ public class OutroScene : MonoBehaviour
     {
         submitSource.Play();
         yield return new WaitForSeconds(submitSource.clip.length);
-        Destroy(MusicPlayer.Instance.gameObject);
+        if (MusicPlayer.Instance != null)
+            Destroy(MusicPlayer.Instance.gameObject);
         SceneManager.LoadScene(0);
     }
 }
