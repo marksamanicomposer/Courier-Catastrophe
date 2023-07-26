@@ -6,39 +6,30 @@
             "id": "ad63c07d-8246-4daf-a6e5-39766acf662a",
             "actions": [
                 {
-                    "name": "Flap",
+                    "name": "Pitch",
                     "type": "Button",
                     "id": "00671974-d721-4fbc-9eeb-53431390be64",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "8d1298c9-347b-44cb-9083-3cc8b99d2422",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Pitch",
-                    "type": "Button",
-                    "id": "be6da4a0-0429-459b-9d5f-5ce594b35a4e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Yaw",
                     "type": "Button",
-                    "id": "ee59d55f-9163-4850-89ec-7cb803ced5b3",
+                    "id": "8d1298c9-347b-44cb-9083-3cc8b99d2422",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Thrust",
+                    "type": "Button",
+                    "id": "be6da4a0-0429-459b-9d5f-5ce594b35a4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -51,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Landing",
+                    "name": "Takeoff",
                     "type": "Button",
                     "id": "4cddaa6f-6281-4558-b0a4-40aa7cb580c9",
                     "expectedControlType": "Button",
@@ -68,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Yaw",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -79,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Yaw",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -90,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Yaw",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -101,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pitch",
+                    "action": "Thrust",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -112,7 +103,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pitch",
+                    "action": "Thrust",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -123,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pitch",
+                    "action": "Thrust",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -145,7 +136,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Flap",
+                    "action": "Pitch",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -156,7 +147,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Flap",
+                    "action": "Pitch",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -167,7 +158,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Flap",
+                    "action": "Pitch",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -178,42 +169,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Landing",
+                    "action": "Takeoff",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "1cfb28b8-0c3c-4b77-b21c-df30550b95c7",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Yaw",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "92139ce8-f855-452d-8816-736af18f5311",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Yaw",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "b24e1d9d-a798-4ba5-abda-43d0fc116984",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Yaw",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }
