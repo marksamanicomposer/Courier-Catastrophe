@@ -2,12 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
+    public GameObject menuScreen;
+    public GameObject controlsMenu;
+    public Button closeControlsButton;
+    public Button playButton;
+
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void OpenControls()
+    {
+        controlsMenu.SetActive(true);
+        menuScreen.SetActive(false);
+        closeControlsButton.Select();
+    }
+
+    public void CloseControls()
+    {
+        controlsMenu.SetActive(false);
+        menuScreen.SetActive(true);
+        playButton.Select();
     }
 
     public void QuitGame()
