@@ -25,7 +25,7 @@ public class PigeonCam : MonoBehaviour
         distance = Vector3.Distance(transform.position, transformTarget.transform.position); //calculates distance between camera and player
 
 
-        if (distance >= maxDistance)
+        if (distance >= maxDistance && distance <=superMaxDistance)
         {
             moveSpeed = .3f; //camera speeds up if you get too far away
         }
@@ -38,7 +38,7 @@ public class PigeonCam : MonoBehaviour
 
         if(distance<= maxDistance)
         {
-            moveSpeed = .2f;
+            moveSpeed = .15f;
         }
        
     }
