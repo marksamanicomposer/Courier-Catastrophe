@@ -5,7 +5,7 @@ using UnityEngine;
 public class PigeonControls : MonoBehaviour
 {
     private float speed = 10;
-    private float turnSpeed = 1.6f;
+    private float turnSpeed = 1.5f;
     public float pitch, yaw;
     Animator anim;
     public float multiplier;
@@ -33,7 +33,7 @@ public class PigeonControls : MonoBehaviour
         transform.Translate(Vector3.back * Time.deltaTime * speed); //forward motion
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) && isFlying)
-            speed = 20f;
+            speed = 15f;
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return) && isFlying)
             speed = 10f;
         if (!isFlying)

@@ -6,7 +6,7 @@ public class PigeonCam : MonoBehaviour
 {
 
     public GameObject transformTarget, pigeon;
-    public float moveSpeed, distance, maxDistance;
+    public float moveSpeed, distance, maxDistance, superMaxDistance;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,17 @@ public class PigeonCam : MonoBehaviour
         {
             moveSpeed = .3f; //camera speeds up if you get too far away
         }
-        else moveSpeed = .17f;
+
+
+        if (distance>= superMaxDistance)
+        {
+            moveSpeed = .5f; //if youre waay too far away
+        }
+
+        if(distance<= maxDistance)
+        {
+            moveSpeed = .2f;
+        }
+       
     }
 }
