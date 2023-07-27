@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PigeonControls : MonoBehaviour
 {
-    [SerializeField] private float speed, turnSpeed;
+    private float speed = 10;
+    private float turnSpeed = 1.6f;
     public float pitch, yaw;
     Animator anim;
     public float multiplier;
