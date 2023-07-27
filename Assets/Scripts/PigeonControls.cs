@@ -22,16 +22,21 @@ public class PigeonControls : MonoBehaviour
     void Update()
     {
                    
-            transform.Translate(0, Mathf.Sin(Time.time * 2 - 2) * Time.deltaTime * multiplier, 0, Space.World); //hover up and down a bit
+        transform.Translate(0, Mathf.Sin(Time.time * 2 - 2) * Time.deltaTime * multiplier, 0, Space.World); //hover up and down a bit
 
-            pitch += turnSpeed * Input.GetAxis("Vertical");//*-1;   //turn direction up/down
-            yaw += turnSpeed * Input.GetAxis("Horizontal");        //turn direction left/right
+        pitch += turnSpeed * Input.GetAxis("Vertical");//*-1;   //turn direction up/down
+        yaw += turnSpeed * Input.GetAxis("Horizontal");        //turn direction left/right
 
-            transform.eulerAngles = new Vector3(pitch, yaw, 0f); // tilt prevention
+        transform.eulerAngles = new Vector3(pitch, yaw, 0f); // tilt prevention
 
-            transform.Translate(Vector3.back * Time.deltaTime * speed); //forward motion
+        transform.Translate(Vector3.back * Time.deltaTime * speed); //forward motion
 
-           
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) && isFlying)
+            speed = 20f;
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return) && isFlying)
+            speed = 10f;
+        if (!isFlying)
+            speed = 10f;
     }
 
 
