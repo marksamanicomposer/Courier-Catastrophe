@@ -18,28 +18,30 @@ public class PigeonCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transformTarget.transform.position, moveSpeed); //camera follows your position
+        transform.position = Vector3.MoveTowards(transform.position, transformTarget.transform.position, moveSpeed * Time.deltaTime); //camera follows your position
 
         transform.LookAt(pigeon.transform); //camera looks at player
 
         distance = Vector3.Distance(transform.position, transformTarget.transform.position); //calculates distance between camera and player
 
 
+        if (distance <= maxDistance)
+        {
+            moveSpeed = 5f;
+        }
+
+
         if (distance >= maxDistance && distance <=superMaxDistance)
         {
-            moveSpeed = .3f; //camera speeds up if you get too far away
+            moveSpeed = 15f; //camera speeds up if you get too far away
         }
 
 
         if (distance>= superMaxDistance)
         {
-            moveSpeed = .5f; //if youre waay too far away
+            moveSpeed = 15f; //if youre waay too far away
         }
 
-        if(distance<= maxDistance)
-        {
-            moveSpeed = .15f;
-        }
-       
+  
     }
 }

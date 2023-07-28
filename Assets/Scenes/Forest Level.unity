@@ -9546,7 +9546,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -11077,10 +11077,10 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 0.757
-    m_Bias: 0.05
+    m_Bias: 0
     m_NormalBias: 0
     m_NearPlane: 0.1
     m_CullingMatrixOverride:
@@ -11112,7 +11112,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -22672,7 +22672,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: -0.75
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -29436,7 +29436,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: 0.67
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -33072,39 +33072,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[20].x
-      value: 3.2920346
+      value: 2.245751
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[20].y
-      value: 0.39216864
+      value: 0.34333336
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[20].z
-      value: -1.7843355
+      value: -2.461103
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[21].x
-      value: 0.772697
+      value: 0.7726971
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[21].y
-      value: 0.45909905
+      value: 0.9481912
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[21].z
-      value: -1.9085728
+      value: -1.908573
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[22].x
-      value: -1.7466407
+      value: -0.7003568
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[22].y
-      value: 0.52602947
+      value: 1.5530491
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[22].z
-      value: -2.0328102
+      value: -1.3560431
       objectReference: {fileID: 0}
     - target: {fileID: 114462757500385858, guid: 2791553a612d84e7c9f3c0a95308376f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[23].x
@@ -35365,6 +35365,10 @@ PrefabInstance:
       propertyPath: deliveryText
       value: 
       objectReference: {fileID: 749201142}
+    - target: {fileID: 5923212135914917808, guid: 1b87d98d7e7164581897850c3ab0ed2b, type: 3}
+      propertyPath: turnSpeed
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
