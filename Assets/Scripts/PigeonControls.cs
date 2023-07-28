@@ -5,7 +5,7 @@ using UnityEngine;
 public class PigeonControls : MonoBehaviour
 {
     private float speed = 10;
-    private float turnSpeed = 1.5f;
+    public float turnSpeed = 1.5f;
     public float pitch, yaw;
     Animator anim;
     public float multiplier;
@@ -25,8 +25,8 @@ public class PigeonControls : MonoBehaviour
                    
         transform.Translate(0, Mathf.Sin(Time.time * 2 - 2) * Time.deltaTime * multiplier, 0, Space.World); //hover up and down a bit
 
-        pitch += turnSpeed * Input.GetAxis("Vertical");//*-1;   //turn direction up/down
-        yaw += turnSpeed * Input.GetAxis("Horizontal");        //turn direction left/right
+        pitch += turnSpeed * Input.GetAxis("Vertical") * Time.deltaTime;//*-1;   //turn direction up/down
+        yaw += turnSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;        //turn direction left/right
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0f); // tilt prevention
 

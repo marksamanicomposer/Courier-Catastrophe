@@ -12,6 +12,7 @@ public class CollectPage : MonoBehaviour
 
     public GameObject goal;
     public GameObject deliveryText;
+    public ParticleSystem gotIt;
 
     private AudioSource source;
 
@@ -32,6 +33,7 @@ public class CollectPage : MonoBehaviour
             source.Play();
             CheckForWin();
             Destroy(other.gameObject);
+            gotIt.Play();
         }
 
         if(other.tag == "Goal")
