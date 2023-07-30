@@ -10,7 +10,12 @@ public class CollectPage : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int _pageCount = 0;
 
-    public GameObject goal;
+    public List<GameObject> goals = new List<GameObject>();
+    public GameObject goal1;
+    public GameObject goal2;
+    public GameObject goal3;
+    public GameObject goal4;
+
     public GameObject deliveryText;
     public ParticleSystem gotIt;
 
@@ -18,8 +23,9 @@ public class CollectPage : MonoBehaviour
 
     void Start()
     {
+        AddGoals();
+
         scoreText.text = "Pages: " + 0 + "/6";
-        goal.SetActive(false);
         deliveryText.SetActive(false);
 
         source = GetComponent<AudioSource>();
@@ -53,8 +59,24 @@ public class CollectPage : MonoBehaviour
     {
         if (_pageCount == 6)
         {
-            goal.SetActive(true);
+            int goal = PickGoal();
+            Instantiate(goals[goal]);
+            goals[goal].SetActive(true);
             deliveryText.SetActive(true);
         }
+    }
+
+    void AddGoals()
+    {
+        goals.Add(goal1);
+        goals.Add(goal2);
+        goals.Add(goal3);
+        goals.Add(goal4);
+    }
+
+    int PickGoal()
+    {
+        int n = Random.Range(0, goals.Count);
+        return n;
     }
 }

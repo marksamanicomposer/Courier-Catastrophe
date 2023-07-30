@@ -5,19 +5,20 @@ using UnityEngine;
 public class RotateHint : MonoBehaviour
 {
     private bool up;
+    public float maxHeight, minHeight;
 
     void Update()
     {
         transform.Rotate(0f, (40 * Time.deltaTime), 0f);
 
-        if (transform.position.y < 45)
+        if (transform.position.y < minHeight)
             up = true;
-        if (transform.position.y > 55)
+        if (transform.position.y > maxHeight)
             up = false;
 
         if(up)
-            transform.Translate(Vector3.up * 7.5f * Time.deltaTime);
+            transform.Translate(Vector3.up * 6.5f * Time.deltaTime);
         else
-            transform.Translate(Vector3.down * 7.5f * Time.deltaTime);
+            transform.Translate(Vector3.down * 6.5f * Time.deltaTime);
     }
 }

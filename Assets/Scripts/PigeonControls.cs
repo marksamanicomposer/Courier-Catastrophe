@@ -44,7 +44,7 @@ public class PigeonControls : MonoBehaviour
         if (other.gameObject.CompareTag("Terrain"))
         {
             anim.Play("walk");
-            Debug.Log("touchingTerrain");
+            //Debug.Log("touchingTerrain");
             isFlying = false;
         }
     }
