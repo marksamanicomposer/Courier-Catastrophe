@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class PigeonControls : MonoBehaviour
 {
-    private float speed = 10;
-    public float turnSpeed = 1.5f;
+    private float speed = 12.5f;
+    private float boostedSpeed = 20;
+    private float turnSpeed = 90f;
     public float pitch, yaw;
     Animator anim;
-    public float multiplier;
+    private float multiplier = 0.5f;
     public bool isFlying = true;
-   
+    private float originalSpeed = 12.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.Play("flight");
     }
 
-    // Update is called once per frame
     void Update()
     {
                    
@@ -33,16 +32,12 @@ public class PigeonControls : MonoBehaviour
         transform.Translate(Vector3.back * Time.deltaTime * speed); //forward motion
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) && isFlying)
-            speed = 15f;
+            speed = boostedSpeed;
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return) && isFlying)
-            speed = 10f;
+            speed = originalSpeed;
         if (!isFlying)
-            speed = 10f;
+            speed = originalSpeed;
     }
-
-
-   
-    
 
     private void OnCollisionEnter(Collision other)
     {
