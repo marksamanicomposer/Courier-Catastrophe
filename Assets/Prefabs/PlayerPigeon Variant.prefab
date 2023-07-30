@@ -41,7 +41,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
       propertyPath: m_LocalScale.x
@@ -144,16 +144,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 499634199652601806}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4928743103817485751}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9143492137993949458}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5409515087965446809}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3626169186296032277}
@@ -183,28 +177,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c250410a6a9698a45a16cf5a7f0cb4b1, type: 3}
   m_PrefabInstance: {fileID: 2432098798759223957}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &499634199652601806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3243125172462395332}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c08b02d8db1ed4d9631cfaa15ce94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPitch: 30
-  pitchInterval: 2.5
-  yawInterval: 2
-  maxVelocity: 60
-  flapForce: 4
-  takeoffForce: 50
-  forwardForce: 100
-  flapDelay: 0
-  flapInterval: 0
-  TakeoffDistance: 1.5
 --- !u!54 &4928743103817485751
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -255,18 +227,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.025, y: 0.03, z: 0}
---- !u!114 &5409515087965446809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3243125172462395332}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f048edbe3e4e4c54abda9f29ca27c5d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3626169186296032277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +242,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   goal: {fileID: 0}
   deliveryText: {fileID: 0}
+  gotIt: {fileID: 0}
 --- !u!82 &5983391961728854506
 AudioSource:
   m_ObjectHideFlags: 0
@@ -390,7 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0d926fe62eda4409858c50a8fdc053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
+  boostedSpeed: 30
   turnSpeed: 1.6
   pitch: 0
   yaw: 0

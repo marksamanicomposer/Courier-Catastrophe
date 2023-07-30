@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.29
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.29885694, g: 0.37820396, b: 0.45272642, a: 0.29}
+  m_IndirectSpecularColor: {r: 0.29885688, g: 0.37820378, b: 0.4527257, a: 0.29}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3740,7 +3740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All pages aquired! Deliver to the marked house
+  m_text: All pages acquired! Deliver to the marked house
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f36d7ad5659478b4997e12b1e64a5433, type: 2}
   m_sharedMaterial: {fileID: 4343887665084981617, guid: f36d7ad5659478b4997e12b1e64a5433, type: 2}
@@ -3949,7 +3949,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: -0.75
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -9546,7 +9546,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -9955,7 +9955,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -14015,10 +14015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformTarget: {fileID: 1525419452}
   pigeon: {fileID: 1352197516}
-  moveSpeed: 0.15
   distance: 0
-  maxDistance: 9
-  superMaxDistance: 17
+  currentSpeed: 0
 --- !u!114 &968131296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14146,7 +14144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968131294}
   m_LocalRotation: {x: -0, y: 0.99552006, z: -0, w: -0.09455096}
-  m_LocalPosition: {x: 218.58, y: 15.2, z: 345.43}
+  m_LocalPosition: {x: 217.58, y: 14.4, z: 340.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22672,7 +22670,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: -0.9
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -29436,7 +29434,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: 0.78
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -35152,7 +35150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: speed
-      value: -0.75
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -926425342823055112, guid: efc65a1b22ef9d24d808705b7dc413df, type: 3}
       propertyPath: pathCreator
@@ -35367,9 +35365,14 @@ PrefabInstance:
       objectReference: {fileID: 749201142}
     - target: {fileID: 5923212135914917808, guid: 1b87d98d7e7164581897850c3ab0ed2b, type: 3}
       propertyPath: turnSpeed
-      value: 60
+      value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5923212135914917808, guid: 1b87d98d7e7164581897850c3ab0ed2b, type: 3}
+      propertyPath: multiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 499634199652601806, guid: 1b87d98d7e7164581897850c3ab0ed2b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2759076570287031678, guid: 1b87d98d7e7164581897850c3ab0ed2b, type: 3}
