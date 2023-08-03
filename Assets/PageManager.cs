@@ -12,8 +12,9 @@ public class PageManager : MonoBehaviour
     void Awake()
     {
         for (int n = 0; n < 10; n++)
+        {
             options.Add(n);
-        //Debug.Log("Total: " + options.Count);
+        }
         SpawnPages();
     }
 
@@ -22,8 +23,6 @@ public class PageManager : MonoBehaviour
         for (int n = 0; n < 6; n++)
         {
             int num = GenerateNumber();
-            //Debug.Log(pages[num]);
-
             GameObject pageInstance = pages[num];
             Instantiate(pageInstance, pageParent);
             pages.Remove(pageInstance);
@@ -32,8 +31,8 @@ public class PageManager : MonoBehaviour
 
     int GenerateNumber()
     {
-        int n = Random.Range(0, options.Count - 1);
-        options.Remove(n);
+        int n = Random.Range(0, options.Count);
+        options.Remove(options[n]);
         return n;
     }
 }
