@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class CollectPage : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class CollectPage : MonoBehaviour
     public GameObject goal2;
     public GameObject goal3;
     public GameObject goal4;
+
+    private GameObject goalInstance = null;
+    private bool scaleHint = false;
 
     public GameObject deliveryText;
     public ParticleSystem gotIt;
@@ -29,6 +33,24 @@ public class CollectPage : MonoBehaviour
         deliveryText.SetActive(false);
 
         source = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if(scaleHint)
+        {
+            Transform hintSize = goalInstance.transform.GetChild(1);
+            float distance = Vector3.Distance(transform.position, hintSize.position);
+
+            var minDistance = 200f;
+            var maxDistance = 500f;
+
+            var minScale = 1f;
+            var maxScale = 2.5f;
+
+            var scale = Mathf.Lerp(minScale, maxScale, Mathf.InverseLerp(minDistance, maxDistance, distance));
+            hintSize.transform.localScale = new Vector3(scale, scale, scale);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,8 +82,9 @@ public class CollectPage : MonoBehaviour
         if (_pageCount == 6)
         {
             int goal = PickGoal();
-            Instantiate(goals[goal]);
-            goals[goal].SetActive(true);
+            goalInstance = Instantiate(goals[goal]);
+            goalInstance.SetActive(true);
+            scaleHint = true;
             deliveryText.SetActive(true);
         }
     }
