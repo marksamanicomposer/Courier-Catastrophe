@@ -7,7 +7,7 @@ public class PigeonCam : MonoBehaviour
 
     public GameObject transformTarget, pigeon;
     private float moveSpeed;
-    private float boostedSpeed = 18.5f;
+    private float boostedSpeed = 17;
     private float maxDistance = 3;
     private float superMaxDistance = 6;
     private float originalSpeed = 12f;
@@ -36,7 +36,7 @@ public class PigeonCam : MonoBehaviour
 
         if (distance>= superMaxDistance)
         {
-            moveSpeed = moveSpeed * 2; //if youre waay too far away
+            moveSpeed = originalSpeed * 2; //if youre waay too far away
         }
     }
 }
